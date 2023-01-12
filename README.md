@@ -1,0 +1,1 @@
+All staff necessary to a simple docker simulation. ROS2 Version: Galactic. Simulator: Webots 2023a
