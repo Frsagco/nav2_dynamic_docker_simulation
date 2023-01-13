@@ -69,7 +69,9 @@ RUN apt-get update &&\
     && rm -rf /var/lib/apt/lists/*
 
 
-
+RUN rm src/turtlebot3/turtlebot3_navigation2/param/burger.yaml && \
+    cp $OVERLAY_WS/src/nav2_dynamic_bringup/resource/burger.yaml src/turtlebot3/turtlebot3_navigation2/param/ &&\
+    . /opt/ros/$ROS_DISTRO/setup.sh && . $OVERLAY_WS/install/local_setup.sh 
 
 # ARG OVERLAY_WS
 # WORKDIR $OVERLAY_WS
@@ -100,4 +102,4 @@ RUN apt-get update &&\
 #       /ros_entrypoint.sh
 
 # run launch file
-CMD ["ros2", "launch", "webots_ros2_turtlebot", "robot_launch.py"]
+CMD [".", "src/nav2_dynamic_bringup/resource/entry_point.sh"]
