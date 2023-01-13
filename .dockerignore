@@ -1,0 +1,11 @@
+**/bin
+**/obj
+**/node_modules
+.circleci/
+.dockerhub/
+.git/
+.github/
+.dockerignore
+.gitignore
+**Dockerfile
+**.Dockerfile
