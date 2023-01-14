@@ -18,7 +18,7 @@ repositories: \n\
     url: https://github.com/Frsagco/nav2_dynamic_docker_simulation.git \n\
   nav2_dynamic: \n\
     type: git \n\
-    url: https://github.com/links-cosero/navigation2_dynamic.git \n\  
+    url: https://github.com/Frsagco/navigation2_dynamic.git \n\  
   turtlebot3: \n\
     type: git \n\
     url: https://github.com/ROBOTIS-GIT/turtlebot3.git \n\
@@ -60,6 +60,8 @@ RUN apt-get update &&\
             src/navigation2_galactic \
         --skip-keys "slam_toolbox" \
         --ignore-src && \
+    apt-get install -y python3-scipy && \
+    apt-get install -y python3-pykdl && \
     . /opt/ros/$ROS_DISTRO/setup.sh &&\
     colcon build --packages-select nav2_dynamic_msgs &&\
     colcon build --packages-select turtlebot3_msgs &&\
@@ -71,7 +73,8 @@ RUN apt-get update &&\
 
 RUN rm src/turtlebot3/turtlebot3_navigation2/param/burger.yaml && \
     cp $OVERLAY_WS/src/nav2_dynamic_bringup/resource/burger.yaml src/turtlebot3/turtlebot3_navigation2/param/ &&\
-    . /opt/ros/$ROS_DISTRO/setup.sh && . $OVERLAY_WS/install/local_setup.sh 
+    . /opt/ros/$ROS_DISTRO/setup.sh && . $OVERLAY_WS/install/local_setup.sh && \
+    cat src/nav2_dynamic_bringup/resource/entry_point.sh > /ros_entrypoint.sh
 
 # ARG OVERLAY_WS
 # WORKDIR $OVERLAY_WS
@@ -100,6 +103,3 @@ RUN rm src/turtlebot3/turtlebot3_navigation2/param/burger.yaml && \
 # RUN sed --in-place --expression \
 #       '$isource "$OVERLAY_WS/install/setup.bash"' \
 #       /ros_entrypoint.sh
-
-# run launch file
-CMD [".", "src/nav2_dynamic_bringup/resource/entry_point.sh"]
