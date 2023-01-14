@@ -42,7 +42,7 @@ RUN vcs import ./ < ../overlay.repos
 #     find ./ -name "COLCON_IGNORE" | \
 #       xargs cp --parents -t /tmp/opt || true
 
-###### BUILDING ###########
+###### BUILDING ###########git pull --ff-only
 # multi-stage for building
 FROM $FROM_IMAGE AS builder
 
