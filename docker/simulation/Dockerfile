@@ -70,11 +70,12 @@ RUN apt-get update &&\
     cp -r src/nav2_dynamic_bringup/resource/box_obstacle1 /usr/local/webots/projects/default/controllers\
     && rm -rf /var/lib/apt/lists/*
 
-
+ARG OVERLAY_WS
 RUN rm src/turtlebot3/turtlebot3_navigation2/param/burger.yaml && \
     cp $OVERLAY_WS/src/nav2_dynamic_bringup/resource/burger.yaml src/turtlebot3/turtlebot3_navigation2/param/ &&\
     . /opt/ros/$ROS_DISTRO/setup.sh && . $OVERLAY_WS/install/local_setup.sh && \
-    cat src/nav2_dynamic_bringup/resource/entry_point.sh > /ros_entrypoint.sh
+    cat src/nav2_dynamic_bringup/resource/entry_point.sh > /ros_entrypoint.sh && \
+    chmod +x /ros_entrypoint.sh
 
 # ARG OVERLAY_WS
 # WORKDIR $OVERLAY_WS
