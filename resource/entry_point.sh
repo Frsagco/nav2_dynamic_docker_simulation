@@ -3,7 +3,7 @@ set -e
 
 export TURTLEBOT3_MODEL=burger
 
-ros2 launch webots_ros2_turtlebot robot_rplidar_launch.py world:=src/nav2_dynamic_bringup/worlds/turtlebot3_rplidar_obstacle.wbt &
+ros2 launch nav2_dynamic_bringup robot_rplidar_launch.py world:=src/nav2_dynamic_bringup/worlds/turtlebot3_rplidar_obstacle.wbt &
 ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=src/nav2_dynamic_bringup/resource/map.yaml.yaml &
 ros2 launch nav2_dynamic_bringup nav2_launch.py &
 

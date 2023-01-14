@@ -110,7 +110,7 @@ def get_ros2_nodes(*args):
 
 
 def generate_launch_description():
-    package_dir = get_package_share_directory('webots_ros2_turtlebot')
+    package_dir = get_package_share_directory('nav2_dynamic_bringup')
     world = LaunchConfiguration('world')
 
     webots = WebotsLauncher(
