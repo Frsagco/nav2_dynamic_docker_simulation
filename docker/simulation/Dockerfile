@@ -79,7 +79,7 @@ RUN rm src/turtlebot3/turtlebot3_navigation2/param/burger.yaml && \
     chmod +x /ros_entrypoint.sh
 
 WORKDIR /
-ENTRYPOINT ["." "/ros_entrypoint.sh"]
+ENTRYPOINT ["/ros_entrypoint.sh"]
 
 # ARG OVERLAY_WS
 # WORKDIR $OVERLAY_WS
